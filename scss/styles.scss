@@ -1,0 +1,66 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+body{
+	position: relative;
+	height: 100vh;
+	width: 100vw;
+	overflow: hidden;
+	font-family: sans-serif;
+	color: #fff;
+	background-color: black;
+}
+
+article {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+article#splash {
+	z-index: 100;
+}
+
+#button {
+	font-size: 2em;
+	padding: .5em;
+	margin: .5em;
+	border: 2px solid white;
+	border-radius: 50%;
+	z-index: 100; //required for click in IE and Edge
+}
+
+[data-noiseBox]{
+	z-index: 1;
+	opacity: 0;
+	transition: opacity 1s;
+}
+
+[data-noiseBox="active"]{
+	background: url(../img/noise.png);
+	background-size: 25% 25%;
+	animation: noiseMove .25s infinite linear;
+	opacity: 1;
+}
+
+[data-noiseBox="active"] > *{
+	display: block;
+	height: 100%;
+	background: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0), rgba(0,0,0,1));
+}
+
+@keyframes noiseMove {
+	0%{ background-position: 45% 50%;}
+	20%{ background-position: 65% 40%;}
+	50%{ background-position: 85% 70%;}
+	80%{ background-position: 65% 80%;}
+	100%{ background-position: 45% 50%;}
+}
